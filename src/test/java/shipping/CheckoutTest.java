@@ -8,9 +8,9 @@ class CheckoutTest {
     Order order = new Order("o1", "c1", "Medellín", 100, 4);
 
     @Test
-    void totalSumaSubtotalYEnvioLegacy() {
-        Checkout checkout = new Checkout(new LegacyShippingCalculator());
-        assertEquals(110.0, checkout.total(order));
+    void totalSumaSubtotalYEnvioSmart() {
+        Checkout checkout = new Checkout(new SmartShippingCalculator());
+        assertEquals(115.0, checkout.total(order)); // 100 + (4 kg × 2,5 + 5)
     }
 
     @Test
