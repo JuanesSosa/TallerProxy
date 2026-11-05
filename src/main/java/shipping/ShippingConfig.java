@@ -16,7 +16,7 @@ public final class ShippingConfig {
     }
 
     public static Checkout checkout(FeatureFlags flags) {
-        ShippingCalculator smartStub = order -> 0.0; // temporal: Smart aún no existe
-        return new Checkout(new ShippingCalculatorProxy(new LegacyShippingCalculator(), smartStub, flags));
+        return new Checkout(new ShippingCalculatorProxy(
+                new LegacyShippingCalculator(), new SmartShippingCalculator(), flags));
     }
 }
