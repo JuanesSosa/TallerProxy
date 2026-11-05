@@ -6,9 +6,11 @@ public final class ShippingConfig {
     private ShippingConfig() {
     }
 
-    /** Flags de producción. Todo apagado: el sistema se comporta igual que antes. */
+    /** Flags de producción. smart-shipping encendido: el envío se calcula con Smart. */
     public static FeatureFlags productionFlags() {
-        return new FeatureFlags();
+        FeatureFlags flags = new FeatureFlags();
+        flags.enable("smart-shipping");
+        return flags;
     }
 
     public static Checkout checkout() {
