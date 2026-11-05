@@ -9,6 +9,13 @@ class CheckoutTest {
 
     @Test
     void totalSumaSubtotalYEnvioLegacy() {
-        assertEquals(110.0, new Checkout().total(order));
+        Checkout checkout = new Checkout(new LegacyShippingCalculator());
+        assertEquals(110.0, checkout.total(order));
+    }
+
+    @Test
+    void checkoutFuncionaConCualquierCalculador() {
+        Checkout checkout = new Checkout(o -> 7.0);
+        assertEquals(107.0, checkout.total(order));
     }
 }
